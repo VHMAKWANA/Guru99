@@ -5,8 +5,11 @@
     <classes>
       <class name="com.qa.guru99.tests.MobileTest">
         <methods>
+          <include name="mobiletitle"/>
           <include name="setup"/>
+          <include name="Shortprice"/>
           <include name="Shortname"/>
+          <include name="Shortposition"/>
           <include name="teardown"/>
         </methods>
       </class> <!-- com.qa.guru99.tests.MobileTest -->

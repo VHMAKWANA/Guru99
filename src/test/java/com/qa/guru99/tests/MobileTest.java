@@ -1,5 +1,7 @@
 package com.qa.guru99.tests;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -19,23 +21,35 @@ public class MobileTest extends Guru99Base {
 		initialization();
 		home = new Home();
 		mobile = home.mobile();
-		
 
 	}
+	@Test(priority = 0)
+	public void sonyprice() {
+		mobile.SonyXperiaPrice();
+	}
+	
 
-	//@Test(priority = 1)
+	@Test(priority = 1)
 	public void mobiletitle() {
 		String title = mobile.MobilepageTitle();
 		System.out.println(title);
 		Assert.assertEquals(title, "Mobile");
 	}
-	
+
 	@Test(priority = 2)
 	public void Shortname() {
 		mobile.ShortByName();
 	}
 
-	
+	@Test(priority = 3)
+	public void Shortposition() {
+		mobile.ShortByPosition();
+	}
+
+	@Test(priority = 3)
+	public void Shortprice()  {
+		mobile.ShortByPrice();
+	}
 
 	@AfterMethod
 	public void teardown() {
