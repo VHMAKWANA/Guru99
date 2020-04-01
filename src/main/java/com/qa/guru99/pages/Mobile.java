@@ -129,6 +129,9 @@ public class Mobile extends Guru99Base {
 		Assert.assertEquals(List_sonyprice, detail_price, "Price not matching");
 	}
 
+	
+	//CART
+	
 	public void SonyCart() {
 		SonyAddToCart.click();
 		quantity.clear();
