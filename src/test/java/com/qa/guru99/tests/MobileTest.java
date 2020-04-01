@@ -1,7 +1,5 @@
 package com.qa.guru99.tests;
 
-import java.io.IOException;
-
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -23,11 +21,6 @@ public class MobileTest extends Guru99Base {
 		mobile = home.mobile();
 
 	}
-	@Test(priority = 0)
-	public void sonyprice() {
-		mobile.SonyXperiaPrice();
-	}
-	
 
 	@Test(priority = 1)
 	public void mobiletitle() {
@@ -47,8 +40,18 @@ public class MobileTest extends Guru99Base {
 	}
 
 	@Test(priority = 3)
-	public void Shortprice()  {
+	public void Shortprice() {
 		mobile.ShortByPrice();
+	}
+
+	@Test(priority = 4)
+	public void sonyprice() {
+		mobile.SonyXperiaPrice();
+	}
+
+	@Test(priority = 5)
+	public void sonycart() {
+		mobile.SonyCart();
 	}
 
 	@AfterMethod

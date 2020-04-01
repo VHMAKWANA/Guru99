@@ -31,11 +31,29 @@ public class Mobile extends Guru99Base {
 	@FindBy(xpath = "//span[@id='product-price-1']/span")
 	WebElement listSonyPrice;
 
+	@FindBy(xpath = "//span[@id='product-price-1']/span")
+	WebElement DetailSonyPrice;
+
 	@FindBy(xpath = "//img[@id='product-collection-image-1']")
 	WebElement SonyLogo;
 
-	@FindBy(xpath = "//span[@id='product-price-1']/span")
-	WebElement DetailSonyPrice;
+	@FindBy(xpath = "(//button[@class='button btn-cart'])[1]")
+	WebElement SonyAddToCart;
+
+	@FindBy(xpath = "//input[@class='input-text qty']")
+	WebElement quantity;
+
+	@FindBy(xpath = "//button[@class='button btn-update']")
+	WebElement UpadteCart;
+
+	@FindBy(xpath = "//span[contains(text(),'Some of the products cannot be ordered in requested quantity.')]")
+	WebElement ErrorUpdateCart;
+
+	@FindBy(xpath = "//span[contains(text(),'Empty Cart')]")
+	WebElement EmptyCart;
+
+	@FindBy(xpath = "//h1[contains(text(),'Shopping Cart is Empty')]")
+	WebElement Emptystatus;
 
 	public Mobile() {
 		PageFactory.initElements(driver, this);
@@ -100,13 +118,27 @@ public class Mobile extends Guru99Base {
 		}
 
 	}
+
 	public void SonyXperiaPrice() {
-		
-		String List_sonyprice= 	listSonyPrice.getText();
+
+		String List_sonyprice = listSonyPrice.getText();
 		System.out.println(List_sonyprice);
-	    SonyLogo.click();
-	    String detail_price= DetailSonyPrice.getText();
-	    System.out.println(detail_price);
-	    Assert.assertEquals(List_sonyprice, detail_price, "Price not matching");
+		SonyLogo.click();
+		String detail_price = DetailSonyPrice.getText();
+		System.out.println(detail_price);
+		Assert.assertEquals(List_sonyprice, detail_price, "Price not matching");
 	}
+
+	public void SonyCart() {
+		SonyAddToCart.click();
+		quantity.clear();
+		quantity.sendKeys("1000");
+		UpadteCart.click();
+		Assert.assertTrue(ErrorUpdateCart.isDisplayed());
+		System.out.println(ErrorUpdateCart.getText());
+		EmptyCart.click();
+		Assert.assertTrue(Emptystatus.isDisplayed());
+		System.out.println(Emptystatus.getText());
+	}
+
 }
