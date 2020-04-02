@@ -5,10 +5,13 @@
     <classes>
       <class name="com.qa.guru99.tests.MobileTest">
         <methods>
+          <include name="sonycart"/>
+          <include name="PopCompare"/>
           <include name="mobiletitle"/>
           <include name="setup"/>
           <include name="Shortprice"/>
           <include name="Shortname"/>
+          <include name="sonyprice"/>
           <include name="Shortposition"/>
           <include name="teardown"/>
         </methods>

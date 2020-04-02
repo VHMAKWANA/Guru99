@@ -5,7 +5,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -54,6 +56,21 @@ public class Mobile extends Guru99Base {
 
 	@FindBy(xpath = "//h1[contains(text(),'Shopping Cart is Empty')]")
 	WebElement Emptystatus;
+
+	@FindBy(xpath = "(//a[@class='link-compare'])[1]")
+	WebElement CompareSony;
+
+	@FindBy(xpath = "(//a[@class='link-compare'])[2]")
+	WebElement CompareIphone;
+
+	@FindBy(xpath = "//button[@title='Compare']")
+	WebElement CompareButton;
+
+	@FindBy(xpath = "(//a[@title='Sony Xperia'])[1]")
+	WebElement PopUPSONY;
+
+	@FindBy(xpath = "(//a[@title='IPhone'])[1]")
+	WebElement PopUIPHONE;
 
 	public Mobile() {
 		PageFactory.initElements(driver, this);
@@ -129,9 +146,8 @@ public class Mobile extends Guru99Base {
 		Assert.assertEquals(List_sonyprice, detail_price, "Price not matching");
 	}
 
-	
-	//CART
-	
+	// CART
+
 	public void SonyCart() {
 		SonyAddToCart.click();
 		quantity.clear();
@@ -144,4 +160,33 @@ public class Mobile extends Guru99Base {
 		System.out.println(Emptystatus.getText());
 	}
 
+	public void PopUpCompare() {
+		CompareSony.click();
+		CompareIphone.click();
+		String parentID = driver.getWindowHandle();
+		System.out.println(parentID);
+
+		CompareButton.click();
+
+		Set<String> windowsID = driver.getWindowHandles();
+		int size = windowsID.size();
+		System.out.println(size);
+		
+		for (String window:windowsID) {
+			if (!parentID.equals(window)) {
+				
+			driver.switchTo().window(window);
+			driver.manage().window().maximize();
+			System.out.println(driver.getTitle());
+			Assert.assertTrue(PopUPSONY.isDisplayed());
+			Assert.assertTrue(PopUIPHONE.isDisplayed());
+			driver.close();
+			
+			}
+		}
+	}
 }
+
+		
+		
+	

@@ -22,6 +22,11 @@ public class MobileTest extends Guru99Base {
 
 	}
 
+	@Test(priority = 0)
+	public void PopCompare() {
+		mobile.PopUpCompare();
+	}
+
 	@Test(priority = 1)
 	public void mobiletitle() {
 		String title = mobile.MobilepageTitle();
