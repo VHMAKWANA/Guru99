@@ -10,6 +10,9 @@ public class Home extends Guru99Base {
 
 	@FindBy(xpath = "//a[@href='http://live.demoguru99.com/index.php/mobile.html']")
 	WebElement MobileLink;
+	
+	@FindBy(xpath = "//a[@href='http://live.demoguru99.com/index.php/tv.html']")
+	WebElement TVlink;
 
 	@FindBy(xpath = "//*[@class='page-title']")
 	WebElement Logo;
@@ -30,6 +33,11 @@ public class Home extends Guru99Base {
 	public Mobile mobile() {
 		MobileLink.click();
 		return new Mobile();
+	}
+
+	public Tv TV() {
+		TVlink.click();
+		return new Tv();
 	}
 
 }

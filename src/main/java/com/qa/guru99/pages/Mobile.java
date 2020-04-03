@@ -165,28 +165,22 @@ public class Mobile extends Guru99Base {
 		CompareIphone.click();
 		String parentID = driver.getWindowHandle();
 		System.out.println(parentID);
-
 		CompareButton.click();
-
 		Set<String> windowsID = driver.getWindowHandles();
 		int size = windowsID.size();
 		System.out.println(size);
-		
-		for (String window:windowsID) {
+
+		for (String window : windowsID) {
 			if (!parentID.equals(window)) {
-				
-			driver.switchTo().window(window);
-			driver.manage().window().maximize();
-			System.out.println(driver.getTitle());
-			Assert.assertTrue(PopUPSONY.isDisplayed());
-			Assert.assertTrue(PopUIPHONE.isDisplayed());
-			driver.close();
-			
+
+				driver.switchTo().window(window);
+				driver.manage().window().maximize();
+				System.out.println(driver.getTitle());
+				Assert.assertTrue(PopUPSONY.isDisplayed());
+				Assert.assertTrue(PopUIPHONE.isDisplayed());
+				driver.close();
+
 			}
 		}
 	}
 }
-
-		
-		
-	

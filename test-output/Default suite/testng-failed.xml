@@ -3,19 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.guru99.tests.MobileTest">
+      <class name="com.qa.guru99.tests.TvTest">
         <methods>
-          <include name="sonycart"/>
-          <include name="PopCompare"/>
-          <include name="mobiletitle"/>
+          <include name="Account"/>
           <include name="setup"/>
-          <include name="Shortprice"/>
-          <include name="Shortname"/>
-          <include name="sonyprice"/>
-          <include name="Shortposition"/>
           <include name="teardown"/>
         </methods>
-      </class> <!-- com.qa.guru99.tests.MobileTest -->
+      </class> <!-- com.qa.guru99.tests.TvTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

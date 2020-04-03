@@ -22,11 +22,6 @@ public class MobileTest extends Guru99Base {
 
 	}
 
-	@Test(priority = 0)
-	public void PopCompare() {
-		mobile.PopUpCompare();
-	}
-
 	@Test(priority = 1)
 	public void mobiletitle() {
 		String title = mobile.MobilepageTitle();
@@ -54,9 +49,14 @@ public class MobileTest extends Guru99Base {
 		mobile.SonyXperiaPrice();
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 0)
 	public void sonycart() {
 		mobile.SonyCart();
+	}
+
+	@Test(priority = 6)
+	public void PopCompare() {
+		mobile.PopUpCompare();
 	}
 
 	@AfterMethod
