@@ -2,24 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="21946" started-at="2020-04-03T11:48:43 EDT" finished-at="2020-04-03T11:49:05 EDT">
+  <suite name="Default suite" duration-ms="52730" started-at="2020-04-05T12:13:57 EDT" finished-at="2020-04-05T12:14:50 EDT">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="21946" started-at="2020-04-03T11:48:43 EDT" finished-at="2020-04-03T11:49:05 EDT">
-      <class name="com.qa.guru99.tests.TvTest">
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.qa.guru99.tests.TvTest@86be70a]" name="setup" is-config="true" duration-ms="14393" started-at="2020-04-03T11:48:43 EDT" finished-at="2020-04-03T11:48:58 EDT">
+    <test name="Default test" duration-ms="52730" started-at="2020-04-05T12:13:57 EDT" finished-at="2020-04-05T12:14:50 EDT">
+      <class name="com.qa.guru99.tests.CheckoutTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.qa.guru99.tests.CheckoutTest@69a3d1d]" name="setup" is-config="true" duration-ms="17713" started-at="2020-04-05T12:13:57 EDT" finished-at="2020-04-05T12:14:15 EDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="Account()[pri:1, instance:com.qa.guru99.tests.TvTest@86be70a]" name="Account" duration-ms="6689" started-at="2020-04-03T11:48:58 EDT" finished-at="2020-04-03T11:49:04 EDT">
+        <test-method status="PASS" signature="checkoutorder()[pri:1, instance:com.qa.guru99.tests.CheckoutTest@69a3d1d]" name="checkoutorder" duration-ms="34932" started-at="2020-04-05T12:14:15 EDT" finished-at="2020-04-05T12:14:50 EDT">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Account -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:com.qa.guru99.tests.TvTest@86be70a]" name="teardown" is-config="true" duration-ms="778" started-at="2020-04-03T11:49:04 EDT" finished-at="2020-04-03T11:49:05 EDT">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- teardown -->
-      </class> <!-- com.qa.guru99.tests.TvTest -->
+        </test-method> <!-- checkoutorder -->
+      </class> <!-- com.qa.guru99.tests.CheckoutTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

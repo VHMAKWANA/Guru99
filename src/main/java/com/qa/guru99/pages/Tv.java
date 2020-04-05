@@ -64,11 +64,11 @@ public class Tv extends Guru99Base {
 	public void Account() {
 		MyAccount.click();
 		CreateAcc.click();
-		FirstName.sendKeys("jay");
-		Lastname.sendKeys("mak");
-		EmailAdress.sendKeys("qqqq@yahoo.com");
-		Password.sendKeys("mmHH456@");
-		ConformPass.sendKeys("mmHH456@");
+		FirstName.sendKeys("kruvil");
+		Lastname.sendKeys("patel");
+		EmailAdress.sendKeys("kruvil!@yahoo.com");
+		Password.sendKeys("hm9228272442@");
+		ConformPass.sendKeys("hm9228272442@");
 		Register.click();
 		System.out.println(SuceesRegister.getText());
 		Assert.assertTrue(SuceesRegister.isDisplayed());
