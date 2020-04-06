@@ -35,6 +35,11 @@ public class CheckoutTest extends Guru99Base {
 		checkout.pdfOrder();
 	}
 
+	@Test(priority = 3)
+	public void Reorderupdate() throws InterruptedException  {
+		checkout.Reorder();
+	}
+
 	@AfterMethod
 	public void teardown() {
 		driver.quit();

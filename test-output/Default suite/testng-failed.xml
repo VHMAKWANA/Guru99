@@ -5,7 +5,7 @@
     <classes>
       <class name="com.qa.guru99.tests.CheckoutTest">
         <methods>
-          <include name="OrderStatus"/>
+          <include name="Reorderupdate"/>
           <include name="teardown"/>
           <include name="setup"/>
         </methods>

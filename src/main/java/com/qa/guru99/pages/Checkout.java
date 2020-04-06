@@ -1,5 +1,7 @@
 package com.qa.guru99.pages;
 
+import java.nio.channels.SeekableByteChannel;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
@@ -15,8 +17,8 @@ import com.qa.guru99.base.Guru99Base;
 public class Checkout extends Guru99Base {
 
 	Tv tv = new Tv();
+
 	public static String order_num;
-   
 
 	@FindBy(xpath = "//div[@class='account-cart-wrapper']/a")
 	WebElement Account;
@@ -146,51 +148,36 @@ public class Checkout extends Guru99Base {
 
 	@FindBy(xpath = "//a[contains(text(),'View Order')]")
 	WebElement viewOrder;
-	
+
 	@FindBy(xpath = "//*[@id=\"my-orders-table\"]/tbody/tr/td[1]")
 	WebElement RecentOrder;
-	
+
 	@FindBy(xpath = "//*[@id=\"my-orders-table\"]/tbody/tr/td[5]/em")
 	WebElement Status;
-	
+
 	@FindBy(xpath = "//a[@class='link-print']")
 	WebElement PrintPDF;
-	
-	
-	
-	
+
+	@FindBy(xpath = "//select[@id='billing-address-select']")
+	WebElement SelectAdress;
+
+	@FindBy(xpath = "//a[@class='link-reorder']")
+	WebElement Reorder;
+
+	@FindBy(xpath = "//input[@class='input-text qty']")
+	WebElement QuantityReorder;
+
+	@FindBy(xpath = "//button[@class='button btn-update']")
+	WebElement Updatereorder;
+
+	@FindBy(xpath = "//table[@id=\"shopping-cart-totals-table\"]/tfoot/tr/td[2]")
+	WebElement TotalReorder;
 
 	public Checkout() {
 		PageFactory.initElements(driver, this);
 	}
-	
 
-	public void checkout() throws InterruptedException {
-		Account.click();
-		MYAccount.click();
-		LoginEmail.sendKeys("malav@gmail.com");
-		LoginPassword.sendKeys("mmHH456@");
-		LoginSend.click();
-		tv.TV.click();
-		tv.LGAddToWishList.click();
-		MyWishlist.click();
-		AddToCart.click();
-		Select select_country = new Select(Country);
-		select_country.selectByVisibleText("Canada");
-		Select select_state = new Select(province);
-		select_state.selectByVisibleText("Ontario");
-		ZipCode.clear();
-		ZipCode.sendKeys("M1H2E9");
-		Estimate.click();
-		Assert.assertTrue(shippingcost.isDisplayed());
-		System.out.println(shippingcost.getText());
-		shippingcost.click();
-		UpdateTotal.click();
-		Assert.assertTrue(shipping_handling.isDisplayed());
-		System.out.println(shipping_handling.getText());
-		Assert.assertTrue(shipping_handling.isDisplayed());
-		ProceedToCHKout.click();
-
+	public void billingandshipping() throws InterruptedException {
 		Name.clear();
 		Name.sendKeys("ajay");
 		Lastname.clear();
@@ -207,6 +194,8 @@ public class Checkout extends Guru99Base {
 		zipCodeBilling.sendKeys("M1H2E9");
 		telephone.clear();
 		telephone.sendKeys("4177545244");
+
+		Thread.sleep(3000);
 		ShipToThisAdd.click();
 		Thread.sleep(3000);
 		JavascriptExecutor jse2 = (JavascriptExecutor) driver;
@@ -247,30 +236,74 @@ public class Checkout extends Guru99Base {
 		Assert.assertTrue(ShippingFees.isDisplayed());
 		PlaceOrder.click();
 		System.out.println("YOUR ORDER NUM IS--->" + OrderNum.getText());
-		 order_num= OrderNum.getText();
+		order_num = OrderNum.getText();
 		Assert.assertTrue(OrderNum.isDisplayed());
 
 	}
 
-	public void pdfOrder() {
-		
+	public void checkout() throws InterruptedException {
 		Account.click();
 		MYAccount.click();
-		LoginEmail.sendKeys("malav@gmail.com");
+		LoginEmail.sendKeys("gurjot@gmail.com");
+		LoginPassword.sendKeys("mmHH456@");
+		LoginSend.click();
+		tv.TV.click();
+		tv.LGAddToWishList.click();
+		MyWishlist.click();
+		AddToCart.click();
+
+		Select select_country = new Select(Country);
+		select_country.selectByVisibleText("Canada");
+		Select select_state = new Select(province);
+		select_state.selectByVisibleText("Ontario");
+		ZipCode.clear();
+		ZipCode.sendKeys("M1H2E9");
+		Estimate.click();
+		Assert.assertTrue(shippingcost.isDisplayed());
+		System.out.println(shippingcost.getText());
+		shippingcost.click();
+		UpdateTotal.click();
+		Assert.assertTrue(shipping_handling.isDisplayed());
+		System.out.println(shipping_handling.getText());
+		Assert.assertTrue(shipping_handling.isDisplayed());
+		ProceedToCHKout.click();
+		billingandshipping();
+	}
+
+	public void pdfOrder() {
+
+		Account.click();
+		MYAccount.click();
+		LoginEmail.sendKeys("gurjot@gmail.com");
 		LoginPassword.sendKeys("mmHH456@");
 		LoginSend.click();
 		Myorder.click();
 		System.out.println(RecentOrder.getText());
-		String Recent_order= RecentOrder.getText();
+		String Recent_order = RecentOrder.getText();
 		Assert.assertEquals(Recent_order, order_num);
 		System.out.println(Status.getText());
-		Assert.assertEquals(Status.getText(),"Pending");
+		Assert.assertEquals(Status.getText(), "Pending");
 		viewOrder.click();
 		PrintPDF.click();
-		
-		
-		
 
 	}
 
+	public void Reorder() throws InterruptedException {
+		Account.click();
+		MYAccount.click();
+		LoginEmail.sendKeys("gurjot@gmail.com");
+		LoginPassword.sendKeys("mmHH456@");
+		LoginSend.click();
+		Thread.sleep(3000);
+		Reorder.click();
+		QuantityReorder.clear();
+		QuantityReorder.sendKeys("5");
+		Updatereorder.click();
+		System.out.println(TotalReorder.getText());
+		Assert.assertTrue(TotalReorder.isDisplayed());
+
+		ProceedToCHKout.click();
+		billingandshipping();
+
+	}
 }
