@@ -1,15 +1,13 @@
 package com.qa.guru99.pages;
 
-import java.awt.Desktop.Action;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.testng.Assert;
 
 import com.qa.guru99.base.Guru99Base;
@@ -17,6 +15,8 @@ import com.qa.guru99.base.Guru99Base;
 public class Checkout extends Guru99Base {
 
 	Tv tv = new Tv();
+	public static String order_num;
+   
 
 	@FindBy(xpath = "//div[@class='account-cart-wrapper']/a")
 	WebElement Account;
@@ -35,6 +35,9 @@ public class Checkout extends Guru99Base {
 
 	@FindBy(xpath = "(//a[@href='http://live.demoguru99.com/index.php/wishlist/'])[2]")
 	WebElement MyWishlist;
+
+	@FindBy(xpath = "//a[contains(text(),'My Orders')]")
+	WebElement Myorder;
 
 	@FindBy(xpath = "(//span[text()='Add to Cart'])[1]")
 	WebElement AddToCart;
@@ -141,14 +144,31 @@ public class Checkout extends Guru99Base {
 	@FindBy(xpath = "//p[text()='Your order # is: ']/a")
 	WebElement OrderNum;
 
+	@FindBy(xpath = "//a[contains(text(),'View Order')]")
+	WebElement viewOrder;
+	
+	@FindBy(xpath = "//*[@id=\"my-orders-table\"]/tbody/tr/td[1]")
+	WebElement RecentOrder;
+	
+	@FindBy(xpath = "//*[@id=\"my-orders-table\"]/tbody/tr/td[5]/em")
+	WebElement Status;
+	
+	@FindBy(xpath = "//a[@class='link-print']")
+	WebElement PrintPDF;
+	
+	
+	
+	
+
 	public Checkout() {
 		PageFactory.initElements(driver, this);
 	}
+	
 
 	public void checkout() throws InterruptedException {
 		Account.click();
 		MYAccount.click();
-		LoginEmail.sendKeys("jayprajapati@gmail.com");
+		LoginEmail.sendKeys("malav@gmail.com");
 		LoginPassword.sendKeys("mmHH456@");
 		LoginSend.click();
 		tv.TV.click();
@@ -170,8 +190,7 @@ public class Checkout extends Guru99Base {
 		System.out.println(shipping_handling.getText());
 		Assert.assertTrue(shipping_handling.isDisplayed());
 		ProceedToCHKout.click();
-		
-		
+
 		Name.clear();
 		Name.sendKeys("ajay");
 		Lastname.clear();
@@ -190,11 +209,10 @@ public class Checkout extends Guru99Base {
 		telephone.sendKeys("4177545244");
 		ShipToThisAdd.click();
 		Thread.sleep(3000);
-        JavascriptExecutor jse2 = (JavascriptExecutor) driver;
+		JavascriptExecutor jse2 = (JavascriptExecutor) driver;
 		jse2.executeScript("arguments[0].scrollIntoView()", ContinueBilling);
 		ContinueBilling.click();
-		
-		
+
 		Thread.sleep(3000);
 
 		Name1.clear();
@@ -213,15 +231,15 @@ public class Checkout extends Guru99Base {
 		select_countryc.selectByVisibleText("Canada");
 		telephone1.clear();
 		telephone1.sendKeys("4177545244");
-        Thread.sleep(3000);
+		Thread.sleep(3000);
 		jse2.executeScript("arguments[0].scrollIntoView()", Continueshiiping);
 		Continueshiiping.click();
 
 		System.out.println(shippingCost.getText());
 		Assert.assertTrue(shippingCost.isDisplayed());
 		Thread.sleep(3000);
-        Continueshipmethod.click();
-		
+		Continueshipmethod.click();
+
 		CheckMoneyOrder.click();
 		Thread.sleep(3000);
 		Continuepayment.click();
@@ -229,7 +247,29 @@ public class Checkout extends Guru99Base {
 		Assert.assertTrue(ShippingFees.isDisplayed());
 		PlaceOrder.click();
 		System.out.println("YOUR ORDER NUM IS--->" + OrderNum.getText());
+		 order_num= OrderNum.getText();
 		Assert.assertTrue(OrderNum.isDisplayed());
+
+	}
+
+	public void pdfOrder() {
+		
+		Account.click();
+		MYAccount.click();
+		LoginEmail.sendKeys("malav@gmail.com");
+		LoginPassword.sendKeys("mmHH456@");
+		LoginSend.click();
+		Myorder.click();
+		System.out.println(RecentOrder.getText());
+		String Recent_order= RecentOrder.getText();
+		Assert.assertEquals(Recent_order, order_num);
+		System.out.println(Status.getText());
+		Assert.assertEquals(Status.getText(),"Pending");
+		viewOrder.click();
+		PrintPDF.click();
+		
+		
+		
 
 	}
 
