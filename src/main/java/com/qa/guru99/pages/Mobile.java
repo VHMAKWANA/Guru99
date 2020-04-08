@@ -72,6 +72,18 @@ public class Mobile extends Guru99Base {
 	@FindBy(xpath = "(//a[@title='IPhone'])[1]")
 	WebElement PopUIPHONE;
 
+	@FindBy(xpath = "(//button[@class='button btn-cart'])[2]")
+	WebElement AddtocartIphone;
+
+	@FindBy(xpath = "//input[@id='coupon_code']")
+	WebElement ApplyCoupon;
+
+	@FindBy(xpath = "//button[@title='Apply']")
+	WebElement ApplyCouponButton;
+
+	@FindBy(xpath = "//table[@id=\"shopping-cart-totals-table\"]/tbody/tr[2]/td[2]/span")
+	WebElement couponGenerate;
+
 	public Mobile() {
 		PageFactory.initElements(driver, this);
 	}
@@ -182,5 +194,15 @@ public class Mobile extends Guru99Base {
 
 			}
 		}
+	}
+	public void ApplyCoupon() {
+		AddtocartIphone.click();
+		ApplyCoupon.sendKeys("GURU50");
+		ApplyCouponButton.click();
+		String Discount= couponGenerate.getText();
+		System.out.println(Discount);
+		Assert.assertEquals(Discount,"-$25.00");
+
+	
 	}
 }

@@ -39,24 +39,29 @@ public class MobileTest extends Guru99Base {
 		mobile.ShortByPosition();
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 4)
 	public void Shortprice() {
 		mobile.ShortByPrice();
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 5)
 	public void sonyprice() {
 		mobile.SonyXperiaPrice();
 	}
 
-	@Test(priority = 0)
+	@Test(priority = 6)
 	public void sonycart() {
 		mobile.SonyCart();
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 7)
 	public void PopCompare() {
 		mobile.PopUpCompare();
+	}
+	
+	@Test(priority = 8)
+	public void ApplyCoupon() {
+		mobile.ApplyCoupon();
 	}
 
 	@AfterMethod
