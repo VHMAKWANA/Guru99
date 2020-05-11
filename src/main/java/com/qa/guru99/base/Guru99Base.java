@@ -22,7 +22,7 @@ public class Guru99Base {
 	
 	public static void initialization() {
 		
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Vijay\\Downloads\\chromedriver.exe");	
+		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver\\chromedriver.exe");	
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
